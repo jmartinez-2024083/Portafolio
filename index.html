@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeremy Martinez Zamora · Desarrollador Full Stack Jr.</title>
+<meta name="description" content="Portafolio de Jeremy Martinez Zamora, Perito en Informática y desarrollador full stack en formación. Proyectos en React Native, Node.js, Java, C++ y más.">
+<meta name="keywords" content="Jeremy Martinez, portafolio desarrollador, Perito en Informática, Kinal, desarrollador junior, full stack, C++, Guatemala">
+<meta name="author" content="Jeremy Jorge Aaron Martinez Zamora">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jeremy Martinez Zamora · Desarrollador Full Stack Jr.">
+<meta property="og:description" content="Perito en Informática en formación construyendo software con iniciativa, disciplina y pasión. Explora mis proyectos.">
+<meta property="og:locale" content="es_GT">
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="is-intro-active">
+
+<!-- INTRO: una estrella se dibuja, respira y se abre para revelar el sitio -->
+<div class="intro-overlay" id="introOverlay" aria-hidden="true">
+  <svg class="intro-star-svg" viewBox="0 0 200 200" width="120" height="120">
+    <defs>
+      <radialGradient id="introGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#c9f5e2" stop-opacity="0.9"/>
+        <stop offset="45%" stop-color="#4fbf8f" stop-opacity="0.45"/>
+        <stop offset="100%" stop-color="#4fbf8f" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <circle class="intro-star-glow" cx="100" cy="100" r="90" fill="url(#introGlow)"/>
+    <g class="intro-star-rays" stroke="#4fbf8f" stroke-width="1.5" stroke-linecap="round" opacity="0.7">
+      <line x1="100" y1="6" x2="100" y2="26"/>
+      <line x1="100" y1="174" x2="100" y2="194"/>
+      <line x1="6" y1="100" x2="26" y2="100"/>
+      <line x1="174" y1="100" x2="194" y2="100"/>
+      <line x1="35" y1="35" x2="49" y2="49"/>
+      <line x1="151" y1="151" x2="165" y2="165"/>
+      <line x1="165" y1="35" x2="151" y2="49"/>
+      <line x1="49" y1="151" x2="35" y2="165"/>
+    </g>
+    <path class="intro-star-path" pathLength="1" d="M100 34 L118 82 L168 88 L131 121 L142 170 L100 144 L58 170 L69 121 L32 88 L82 82 Z"
+          fill="rgba(79,191,143,0.12)" stroke="#4fbf8f" stroke-width="2.5" stroke-linejoin="round"/>
+  </svg>
+</div>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<!-- Fondo ambiental: estrellas + luna -->
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
+
+<!-- NAVBAR: cápsula flotante centrada, con menú desplegable propio en móvil -->
+<header class="site-header" id="siteHeader">
+  <div class="nav-island">
+    <a href="#inicio" class="logo" data-section="inicio" aria-label="Ir al inicio">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M15 3a8 8 0 1 0 5 14 6.2 6.2 0 0 1-5-14Z" fill="currentColor"/></svg>
+      </span>
+      <span class="logo-text">Jeremy<span class="logo-dot">.</span>M</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Navegación principal" id="navLinks" role="tablist">
+      <a href="#sobre-mi" data-section="sobre-mi" role="tab">Sobre mí</a>
+      <a href="#tecnologias" data-section="tecnologias" role="tab">Stack</a>
+      <a href="#proyectos" data-section="proyectos" role="tab">Proyectos</a>
+      <a href="#trayectoria" data-section="trayectoria" role="tab">Trayectoria</a>
+    </nav>
+
+    <a href="#contacto" class="nav-cta" data-section="contacto">Contacto</a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navDropdown" aria-label="Abrir menú de navegación">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="nav-dropdown" id="navDropdown" aria-label="Navegación móvil">
+    <a href="#inicio" data-section="inicio">Inicio</a>
+    <a href="#sobre-mi" data-section="sobre-mi">Sobre mí</a>
+    <a href="#tecnologias" data-section="tecnologias">Stack</a>
+    <a href="#proyectos" data-section="proyectos">Proyectos</a>
+    <a href="#trayectoria" data-section="trayectoria">Trayectoria</a>
+    <a href="#contacto" data-section="contacto">Contacto</a>
+  </nav>
+</header>
+
+<main id="contenido">
+
+  <!-- HERO -->
+  <section class="hero" id="inicio" data-tab="inicio">
+    <div class="hero-inner">
+      <p class="eyebrow reveal">Perito en Informática · Centro Educativo Kinal</p>
+      <h1 class="hero-title reveal">
+        <span class="hero-greeting">Hola, mi nombre es</span>
+        <span class="hero-name">Jeremy Martinez</span>
+      </h1>
+      <p class="hero-sub reveal">
+        Desarrollador full stack en formación. Construyo aplicaciones web y móviles
+        con la misma constancia con la que una estrella sostiene su propia luz:
+        poco a poco, con intención, sin apagarse.
+      </p>
+      <div class="hero-actions reveal">
+        <a href="#proyectos" class="btn btn-primary">
+          Ver proyectos
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#contacto" class="btn btn-ghost">Hablemos</a>
+      </div>
+    </div>
+
+    <button class="scroll-cue" id="scrollCue" aria-label="Desplazarse hacia abajo">
+      <span class="scroll-cue-line"></span>
+      Desplázate
+    </button>
+  </section>
+
+  <!-- FRASE / FILOSOFÍA -->
+  <section class="philosophy" aria-label="Filosofía personal" data-tab="inicio">
+    <p class="philosophy-quote reveal">
+      “Mi meta no es ser la estrella más brillante, sino una cuya
+      <em>luz sea imposible de olvidar</em>.”
+    </p>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section class="section" id="sobre-mi" data-tab="sobre-mi">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">01 · Quién soy</span>
+      <h2 class="section-title">Sobre mí</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-seal reveal" aria-hidden="true">
+        <svg viewBox="0 0 260 260" class="seal-orbit">
+          <circle cx="130" cy="130" r="118" class="orbit-ring"/>
+          <circle cx="130" cy="130" r="96" class="orbit-ring orbit-ring--inner"/>
+        </svg>
+        <div class="seal-core">
+          <img src="images/FotoPerfil.jpeg" alt="Foto de Jeremy Martinez" class="seal-photo"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <span class="seal-initials">JM</span>
+        </div>
+        <span class="seal-star seal-star--1"></span>
+        <span class="seal-star seal-star--2"></span>
+        <span class="seal-star seal-star--3"></span>
+      </div>
+
+      <div class="about-copy reveal">
+        <p>
+          Tengo 18 años y curso Perito en Informática en el Centro Educativo Técnico
+          Laboral Kinal. Desde que escribí mis primeras líneas de código entendí que
+          programar no es solo resolver problemas técnicos: es construir herramientas
+          que otras personas van a usar, confiar y necesitar.
+        </p>
+        <p>
+          Sé un poco de frontend, backend y desarrollo móvil, y sigo aprendiendo cada
+          uno con calma. Disfruto especialmente el momento en el que un sistema pasa de ser una idea
+          en un documento a una aplicación funcionando. He aprendido a apoyarme en
+          herramientas de inteligencia artificial como parte de mi flujo de trabajo,
+          no para reemplazar el criterio, sino para acelerar la exploración y dedicar
+          más tiempo a pensar bien las decisiones importantes.
+        </p>
+        <p>
+          Trabajo bien en equipo, tomo iniciativa cuando un proyecto lo necesita y me
+          tomo en serio la responsabilidad de entregar código que otros puedan leer,
+          mantener y mejorar. Todavía soy estudiante, pero ya construyo software
+          pensado para producción.
+        </p>
+
+        <div class="about-meta">
+          <div class="about-meta-item">
+            <span class="about-meta-label">Formación</span>
+            <span class="about-meta-value">Perito en Informática · Kinal</span>
+          </div>
+          <div class="about-meta-item">
+            <span class="about-meta-label">Enfoque</span>
+            <span class="about-meta-value">Full Stack <br> Mobile</span>
+          </div>
+          <div class="about-meta-item">
+            <span class="about-meta-label">Idiomas</span>
+            <span class="about-meta-value">Español (nativo) <br>  Inglés (básico)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORTALEZAS: lista dividida por líneas, sin cajas -->
+    <div class="strengths">
+      <h3 class="strengths-title reveal">Cómo trabajo</h3>
+      <div class="strengths-list">
+        <div class="strength-item reveal">
+          <span class="strength-index">01</span>
+          <div class="strength-copy">
+            <h4>Trabajo en equipo</h4>
+            <p>Colaboro con claridad, escucho antes de proponer y dejo el ego fuera del código.</p>
+          </div>
+        </div>
+        <div class="strength-item reveal">
+          <span class="strength-index">02</span>
+          <div class="strength-copy">
+            <h4>Organización</h4>
+            <p>Divido el trabajo en pasos claros y sostengo el orden incluso bajo presión de tiempo.</p>
+          </div>
+        </div>
+        <div class="strength-item reveal">
+          <span class="strength-index">03</span>
+          <div class="strength-copy">
+            <h4>Aprendizaje rápido</h4>
+            <p>Adopto tecnología nueva sin fricción: leo, pruebo y aplico en el mismo día.</p>
+          </div>
+        </div>
+        <div class="strength-item reveal">
+          <span class="strength-index">04</span>
+          <div class="strength-copy">
+            <h4>Iniciativa propia</h4>
+            <p>No espero instrucciones para detectar un problema y proponer cómo resolverlo.</p>
+          </div>
+        </div>
+        <div class="strength-item reveal">
+          <span class="strength-index">05</span>
+          <div class="strength-copy">
+            <h4>Responsabilidad</h4>
+            <p>Cumplo lo que acuerdo y me hago cargo de mis entregas de principio a fin.</p>
+          </div>
+        </div>
+        <div class="strength-item reveal">
+          <span class="strength-index">06</span>
+          <div class="strength-copy">
+            <h4>Puntualidad</h4>
+            <p>Me gusta ser puntual y no dejar las cosas para el último momento.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="tecnologias" data-tab="tecnologias">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">02 · Caja de herramientas</span>
+      <h2 class="section-title">Stack tecnológico</h2>
+      <p class="section-desc">
+        Organizadas por área de trabajo. La barra indica mi nivel de dominio real;
+        los porcentajes son un punto de partida que iré ajustando con el tiempo.
+      </p>
+    </div>
+
+    <div class="skills-columns">
+
+      <div class="skill-category reveal">
+        <h3 class="skill-category-title">Frontend</h3>
+        <ul class="skill-bars">
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>HTML</span><span class="skill-percent">70%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:70%"></span></div>
+          </li>
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>CSS</span><span class="skill-percent">60%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:60%"></span></div>
+          </li>
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>JavaScript</span><span class="skill-percent">50%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:50%"></span></div>
+          </li>
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>React</span><span class="skill-percent">40%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:40%"></span></div>
+          </li>
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>TypeScript</span><span class="skill-percent">30%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:30%"></span></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="skill-category reveal">
+        <h3 class="skill-category-title">Backend</h3>
+        <ul class="skill-bars">
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>Java</span><span class="skill-percent">60%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:60%"></span></div>
+          </li>
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>Node.js</span><span class="skill-percent">40%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:40%"></span></div>
+          </li>
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>Express</span><span class="skill-percent">30%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:30%"></span></div>
+          </li>
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>C#</span><span class="skill-percent">30%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:30%"></span></div>
+          </li>
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>Python</span><span class="skill-percent">10%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:10%"></span></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="skill-category reveal">
+        <h3 class="skill-category-title">Mobile &amp; Escritorio</h3>
+        <ul class="skill-bars">
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>JavaFX</span><span class="skill-percent">60%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:60%"></span></div>
+          </li>
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>React Native</span><span class="skill-percent">40%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:40%"></span></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="skill-category reveal">
+        <h3 class="skill-category-title">Bases de datos</h3>
+        <ul class="skill-bars">
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>MySQL</span><span class="skill-percent">70%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:70%"></span></div>
+          </li>
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>MongoDB</span><span class="skill-percent">60%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:60%"></span></div>
+          </li>
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>PostgreSQL</span><span class="skill-percent">40%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:40%"></span></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="skill-category reveal">
+        <h3 class="skill-category-title">Herramientas &amp; DevOps</h3>
+        <ul class="skill-bars">
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>GitHub</span><span class="skill-percent">75%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:75%"></span></div>
+          </li>
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>Git</span><span class="skill-percent">70%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:70%"></span></div>
+          </li>
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>Docker</span><span class="skill-percent">55%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:55%"></span></div>
+          </li>
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>Postman</span><span class="skill-percent">55%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:55%"></span></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="skill-category reveal">
+        <h3 class="skill-category-title">IA</h3>
+        <ul class="skill-bars">
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>IA generativa</span><span class="skill-percent">60%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:60%"></span></div>
+          </li>
+          <li class="skill-bar-row">
+            <div class="skill-bar-head"><span>Prompt engineering</span><span class="skill-percent">40%</span></div>
+            <div class="skill-bar-track"><span class="skill-bar-fill" style="width:40%"></span></div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Conocimientos sin barra de porcentaje: tecnologías/herramientas usadas de forma transversal -->
+    <div class="skill-tags-block reveal">
+      <h3 class="skill-tags-title">También he trabajado con</h3>
+      <ul class="skill-tags">
+        <li>Arquitectura de microservicios</li>
+        <li>JSON</li>
+        <li>HTTP</li>
+        <li>Variables de entorno (.env)</li>
+        <li>npm</li>
+      </ul>
+    </div>
+
+    <div class="skill-tags-block skill-tags-block--learning reveal">
+      <h3 class="skill-tags-title">Actualmente aprendiendo</h3>
+      <ul class="skill-tags skill-tags--learning">
+        <li>React</li>
+        <li>Docker avanzado</li>
+        <li>Arquitectura de microservicios</li>
+        <li>CI/CD</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROYECTOS: orden cronológico (2025 · 5to → 2026 · 6to), con espacio para imagen -->
+  <section class="section" id="proyectos" data-tab="proyectos">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">03 · Trabajo construido</span>
+      <h2 class="section-title">Proyectos</h2>
+      <p class="section-desc">
+        Cinco sistemas completos, desarrollados a lo largo de mi paso por Kinal, la mayoría
+        en equipo aplicando metodologías ágiles. Desliza o usa las flechas para verlos todos.
+      </p>
+    </div>
+
+    <div class="projects-carousel">
+      <div class="projects-track" id="projectsTrack">
+
+      <!-- 2025 · 5to -->
+      <article class="project-card reveal">
+        <div class="project-visual">
+          <img src="images/Vet.jpg" alt="Captura del proyecto Veterinaria" class="project-img" loading="lazy"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="project-img-placeholder">
+            <svg viewBox="0 0 24 24" width="26" height="26"><rect x="3.5" y="5" width="17" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8.5" cy="10" r="1.5" fill="currentColor"/><path d="m5 17 4.5-5 3.5 3.5 3-3 4 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>images/veterinaria.jpg</span>
+          </div>
+          <span class="project-badge">2025 · 5to</span>
+        </div>
+        <div class="project-body">
+          <h3>Veterinaria</h3>
+          <p>Aplicación de gestión para clínicas veterinarias, desarrollada como proyecto independiente en Python.</p>
+          <ul class="project-tech">
+            <li>Python</li>
+          </ul>
+          <div class="project-links">
+            <span class="project-link project-link--disabled">Repositorio privado</span>
+            <span class="project-link project-link--disabled">Sin despliegue público</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2025 · 5to -->
+      <article class="project-card reveal">
+        <div class="project-visual">
+          <img src="images/Takito.png" alt="Captura del proyecto Ta'Kito" class="project-img" loading="lazy"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="project-img-placeholder">
+            <svg viewBox="0 0 24 24" width="26" height="26"><rect x="3.5" y="5" width="17" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8.5" cy="10" r="1.5" fill="currentColor"/><path d="m5 17 4.5-5 3.5 3.5 3-3 4 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>images/Takito.png</span>
+          </div>
+          <span class="project-badge">2025 · 5to</span>
+        </div>
+        <div class="project-body">
+          <h3>Ta'Kito</h3>
+          <p>Sistema administrativo de escritorio para una taquería, enfocado en control de ventas e inventario del negocio.</p>
+          <ul class="project-tech">
+            <li>Java</li><li>JavaFX</li><li>MySQL</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/asiliezar-2024342/TaKito" class="project-link" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 1a7 7 0 0 0-2.2 13.6c.35.06.48-.15.48-.34v-1.2c-1.95.42-2.36-.94-2.36-.94-.32-.8-.78-1.02-.78-1.02-.64-.44.05-.43.05-.43.7.05 1.07.72 1.07.72.63 1.07 1.65.76 2.05.58.06-.46.25-.76.45-.94-1.56-.18-3.2-.78-3.2-3.47 0-.77.28-1.4.72-1.89-.07-.18-.31-.9.07-1.87 0 0 .59-.19 1.94.72a6.7 6.7 0 0 1 3.53 0c1.35-.91 1.94-.72 1.94-.72.38.97.14 1.69.07 1.87.45.49.72 1.12.72 1.89 0 2.7-1.65 3.29-3.22 3.47.26.22.48.65.48 1.31v1.94c0 .19.13.41.49.34A7 7 0 0 0 8 1Z" fill="currentColor"/></svg>
+              Repositorio
+            </a>
+            <span class="project-link project-link--disabled">Sin despliegue público</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2026 · 6to -->
+      <article class="project-card reveal">
+        <div class="project-visual">
+          <img src="images/UrBus.png" alt="Captura del proyecto UrBus" class="project-img" loading="lazy"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="project-img-placeholder">
+            <svg viewBox="0 0 24 24" width="26" height="26"><rect x="3.5" y="5" width="17" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8.5" cy="10" r="1.5" fill="currentColor"/><path d="m5 17 4.5-5 3.5 3.5 3-3 4 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>images/UrBus.png</span>
+          </div>
+          <span class="project-badge">2026 · 6to</span>
+        </div>
+        <div class="project-body">
+          <h3>UrBus</h3>
+          <p>Aplicación web para monitorear buses escolares en tiempo real, facilitando el seguimiento de rutas y la ubicación de estudiantes.</p>
+          <ul class="project-tech">
+            <li>JavaScript</li><li>Node.js</li><li>Express</li><li>MongoDB</li><li>Leaflet</li><li>C++</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/Faze-Code-IN6AV/UrBus" class="project-link" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 1a7 7 0 0 0-2.2 13.6c.35.06.48-.15.48-.34v-1.2c-1.95.42-2.36-.94-2.36-.94-.32-.8-.78-1.02-.78-1.02-.64-.44.05-.43.05-.43.7.05 1.07.72 1.07.72.63 1.07 1.65.76 2.05.58.06-.46.25-.76.45-.94-1.56-.18-3.2-.78-3.2-3.47 0-.77.28-1.4.72-1.89-.07-.18-.31-.9.07-1.87 0 0 .59-.19 1.94.72a6.7 6.7 0 0 1 3.53 0c1.35-.91 1.94-.72 1.94-.72.38.97.14 1.69.07 1.87.45.49.72 1.12.72 1.89 0 2.7-1.65 3.29-3.22 3.47.26.22.48.65.48 1.31v1.94c0 .19.13.41.49.34A7 7 0 0 0 8 1Z" fill="currentColor"/></svg>
+              Repositorio
+            </a>
+            <a href="https://client-admin-ojvw.onrender.com/" class="project-link" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 2h8v8M14 2 6.5 9.5M4 4H2v10h10v-2" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Demo en Render
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2026 · 6to -->
+      <article class="project-card reveal">
+        <div class="project-visual">
+          <img src="images/Paysmart.jpeg" alt="Captura del proyecto PaySmart" class="project-img" loading="lazy"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="project-img-placeholder">
+            <svg viewBox="0 0 24 24" width="26" height="26"><rect x="3.5" y="5" width="17" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8.5" cy="10" r="1.5" fill="currentColor"/><path d="m5 17 4.5-5 3.5 3.5 3-3 4 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>images/Paysmart.jpeg</span>
+          </div>
+          <span class="project-badge">2026 · 6to</span>
+        </div>
+        <div class="project-body">
+          <h3>PaySmart</h3>
+          <p>Sistema bancario completo desarrollado en equipo, con autenticación, gestión de usuarios y módulos financieros independientes.</p>
+          <ul class="project-tech">
+            <li>Java</li><li>Node.js</li><li>Express</li><li>PostgreSQL</li><li>Docker</li><li>C++</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/Faze-Code-IN6AV/PaySmart.git" class="project-link" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 1a7 7 0 0 0-2.2 13.6c.35.06.48-.15.48-.34v-1.2c-1.95.42-2.36-.94-2.36-.94-.32-.8-.78-1.02-.78-1.02-.64-.44.05-.43.05-.43.7.05 1.07.72 1.07.72.63 1.07 1.65.76 2.05.58.06-.46.25-.76.45-.94-1.56-.18-3.2-.78-3.2-3.47 0-.77.28-1.4.72-1.89-.07-.18-.31-.9.07-1.87 0 0 .59-.19 1.94.72a6.7 6.7 0 0 1 3.53 0c1.35-.91 1.94-.72 1.94-.72.38.97.14 1.69.07 1.87.45.49.72 1.12.72 1.89 0 2.7-1.65 3.29-3.22 3.47.26.22.48.65.48 1.31v1.94c0 .19.13.41.49.34A7 7 0 0 0 8 1Z" fill="currentColor"/></svg>
+              Repositorio
+            </a>
+            <a href="https://client-admin-kkrj.onrender.com/" class="project-link" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 2h8v8M14 2 6.5 9.5M4 4H2v10h10v-2" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Demo en Render
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2026 · 6to -->
+      <article class="project-card reveal">
+        <div class="project-visual">
+          <img src="images/Foodline.png" alt="Captura del proyecto FoodLine" class="project-img" loading="lazy"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="project-img-placeholder">
+            <svg viewBox="0 0 24 24" width="26" height="26"><rect x="3.5" y="5" width="17" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8.5" cy="10" r="1.5" fill="currentColor"/><path d="m5 17 4.5-5 3.5 3.5 3-3 4 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>images/Foodline.png</span>
+          </div>
+          <span class="project-badge">2026 · 6to</span>
+        </div>
+        <div class="project-body">
+          <h3>FoodLine</h3>
+          <p>Sistema completo de gestión para restaurantes, con módulos administrativos para pedidos, inventario y personal.</p>
+          <ul class="project-tech">
+            <li>JavaScript</li><li>Node.js</li><li>Express</li><li>MySQL</li><li>C++</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/Faze-Code-IN6AV/FoodLine" class="project-link" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 1a7 7 0 0 0-2.2 13.6c.35.06.48-.15.48-.34v-1.2c-1.95.42-2.36-.94-2.36-.94-.32-.8-.78-1.02-.78-1.02-.64-.44.05-.43.05-.43.7.05 1.07.72 1.07.72.63 1.07 1.65.76 2.05.58.06-.46.25-.76.45-.94-1.56-.18-3.2-.78-3.2-3.47 0-.77.28-1.4.72-1.89-.07-.18-.31-.9.07-1.87 0 0 .59-.19 1.94.72a6.7 6.7 0 0 1 3.53 0c1.35-.91 1.94-.72 1.94-.72.38.97.14 1.69.07 1.87.45.49.72 1.12.72 1.89 0 2.7-1.65 3.29-3.22 3.47.26.22.48.65.48 1.31v1.94c0 .19.13.41.49.34A7 7 0 0 0 8 1Z" fill="currentColor"/></svg>
+              Repositorio
+            </a>
+            <a href="https://foodline-client-admin.onrender.com/" class="project-link" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 2h8v8M14 2 6.5 9.5M4 4H2v10h10v-2" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Demo en Render
+            </a>
+          </div>
+        </div>
+      </article>
+
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-arrow" id="projPrev" aria-label="Proyecto anterior">
+          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="carousel-dots" id="projectDots" role="tablist" aria-label="Selecciona un proyecto"></div>
+        <button class="carousel-arrow" id="projNext" aria-label="Siguiente proyecto">
+          <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAYECTORIA: orientación horizontal, agrupada por período (no repite cada proyecto) -->
+  <section class="section section-alt" id="trayectoria" data-tab="trayectoria">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">04 · El camino hasta aquí</span>
+      <h2 class="section-title">Trayectoria</h2>
+      <p class="section-desc">
+        Del salón de clases a mi primera práctica profesional, con una constante:
+        proyectos colaborativos reales, aplicando metodologías ágiles y tecnología moderna.
+      </p>
+    </div>
+
+    <div class="timeline-track">
+      <div class="timeline-h-item reveal">
+        <span class="timeline-h-dot" aria-hidden="true"></span>
+        <span class="timeline-tag">Formación</span>
+        <h3>Inicio en Kinal</h3>
+        <p>Comienzo de la carrera de Perito en Informática en el Centro Educativo Técnico Laboral Kinal.</p>
+      </div>
+
+      <div class="timeline-h-item reveal">
+        <span class="timeline-h-dot" aria-hidden="true"></span>
+        <span class="timeline-tag">2025 · 5to</span>
+        <h3>Primeros proyectos propios</h3>
+        <p>Primeros sistemas completos, uno individual y otro en equipo, aplicando Python y Java.</p>
+        <div class="timeline-chips">
+          <span class="timeline-chip">Veterinaria</span>
+          <span class="timeline-chip">Ta'Kito</span>
+        </div>
+      </div>
+
+      <div class="timeline-h-item reveal">
+        <span class="timeline-h-dot" aria-hidden="true"></span>
+        <span class="timeline-tag">2026 · 6to</span>
+        <h3>Proyectos en equipo a mayor escala</h3>
+        <p>Tres sistemas completos con arquitectura orientada a producción, roles definidos y metodologías ágiles.</p>
+        <div class="timeline-chips">
+          <span class="timeline-chip">UrBus</span>
+          <span class="timeline-chip">PaySmart</span>
+          <span class="timeline-chip">FoodLine</span>
+        </div>
+      </div>
+
+      <div class="timeline-h-item reveal">
+        <span class="timeline-h-dot timeline-h-dot--now" aria-hidden="true"></span>
+        <span class="timeline-tag">Ahora</span>
+        <h3>Practicante en EMPAGUA</h3>
+        <p>Practicante en el área de Aplicaciones de EMPAGUA. En paralelo, sigo aprendiendo por cuenta propia para no quedarme atrás.</p>
+        <div class="timeline-chips">
+          <span class="timeline-chip">EMPAGUA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO: panel con correo como CTA grande + canales secundarios en íconos -->
+  <section class="section contact" id="contacto" data-tab="contacto">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">05 · Conectemos</span>
+      <h2 class="section-title">Contacto</h2>
+      <div class="availability-badge">
+        <span class="availability-dot" aria-hidden="true"></span>
+        Disponible para prácticas profesionales y proyectos freelance
+      </div>
+    </div>
+
+    <div class="contact-panel reveal">
+      <div class="contact-main">
+        <p class="contact-eyebrow">¿Tienes una oportunidad o un proyecto en mente?</p>
+        <a href="mailto:martinez.jeremyzam@gmail.com" class="contact-email-link" id="emailLink">
+          <span class="contact-email-text">martinez.jeremyzam@gmail.com</span>
+          <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M4 11h13M12 5.5 18 11l-6 5.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="email-copied-tip" id="emailCopiedTip" role="status" aria-live="polite">Correo copiado · abriendo Gmail</span>
+        </a>
+        <p class="contact-hint">Escríbeme directo, con gusto respondo. También estoy en:</p>
+
+        <ul class="contact-topics" aria-label="Temas sobre los que puedes escribirme">
+          <li>Prácticas profesionales</li>
+          <li>Proyectos freelance</li>
+          <li>Colaboraciones en equipo</li>
+          <li>Dudas técnicas</li>
+        </ul>
+      </div>
+
+      <div class="contact-channels">
+        <a class="channel" href="https://github.com/jmartinez-2024083" target="_blank" rel="noopener noreferrer">
+          <span class="channel-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.091.682-.217.682-.482 0-.237-.009-.866-.014-1.699-2.782.604-3.369-1.343-3.369-1.343-.454-1.154-1.11-1.462-1.11-1.462-.908-.621.069-.608.069-.608 1.003.07 1.531 1.028 1.531 1.028.892 1.528 2.341 1.087 2.91.832.091-.647.35-1.088.636-1.339-2.22-.252-4.555-1.112-4.555-4.944 0-1.091.39-1.984 1.029-2.681-.103-.253-.446-1.272.098-2.65 0 0 .84-.269 2.75 1.026A9.564 9.564 0 0112 6.845c.85.004 1.705.115 2.504.337 1.909-1.295 2.747-1.026 2.747-1.026.546 1.379.203 2.398.1 2.65.64.697 1.028 1.59 1.028 2.681 0 3.842-2.337 4.69-4.566 4.935.36.31.678.923.678 1.862 0 1.344-.012 2.427-.012 2.756 0 .268.18.58.688.481A10.012 10.012 0 0022 12c0-5.523-4.477-10-10-10z"/>
+            </svg>
+          </span>
+          <span class="channel-label">GitHub</span>
+        </a>
+
+        <a class="channel" href="https://www.linkedin.com/in/jeremy-martinez-a661b2423/" target="_blank" rel="noopener noreferrer">
+          <span class="channel-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8.5" r="1.3" fill="currentColor"/><path d="M8 11.5v6M12 17.5v-3.5c0-1.5 1-2.5 2.3-2.5s2.2 1 2.2 2.6v3.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </span>
+          <span class="channel-label">LinkedIn</span>
+        </a>
+
+        <a class="channel" href="tel:+50253107469">
+          <span class="channel-icon">
+            <svg viewBox="0 0 24 24"><path d="M6 3h4l2 5-2.5 1.5a12 12 0 0 0 5 5L16 12l5 2v4a2 2 0 0 1-2 2C10.5 20 4 13.5 4 5a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="channel-label">5310 7469</span>
+        </a>
+
+        <div class="channel channel--static">
+          <span class="channel-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </span>
+          <span class="channel-label">Amatitlán, Guatemala</span>
+        </div>
+      </div>
+
+      <p class="contact-closing">Respondo rápido, normalmente en menos de un día. Aunque no tengas algo concreto todavía, escríbeme — siempre es un buen momento para conversar.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p class="footer-rights">&copy; <span id="year"></span> Jeremy Jorge Aaron Martinez Zamora. Todos los derechos reservados.</p>
+  <p class="footer-quote">Sigue brillando, incluso en las noches sin luna.</p>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Volver arriba">
+  <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 13V3M3 8l5-5 5 5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
