@@ -659,7 +659,10 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .projects-track {
   position: relative;
   display: flex;
-  gap: 1.5rem;
+  --gap: 1.5rem;
+  --per-view: 1;
+  gap: var(--gap);
+  scroll-padding-inline: 0.3rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -671,14 +674,15 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .projects-track::-webkit-scrollbar { display: none; }
 .projects-track .project-card {
   flex: 0 0 auto;
-  width: min(80vw, 340px);
+  /* ancho exacto: reparte el espacio entre las tarjetas que caben a la vez */
+  width: calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
   scroll-snap-align: start;
 }
 @media (min-width: 640px) {
-  .projects-track .project-card { width: min(46vw, 340px); }
+  .projects-track { --per-view: 2; }
 }
 @media (min-width: 1000px) {
-  .projects-track .project-card { width: min(30vw, 340px); }
+  .projects-track { --per-view: 3; }
 }
 .project-card {
   background: var(--surface);
@@ -733,7 +737,10 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .project-visual {
   position: relative;
   aspect-ratio: 16 / 9.5;
-  background: linear-gradient(155deg, var(--moss-4), var(--bg-alt) 70%);
+  background-color: var(--moss-4);
+  background-image: var(--lqip, linear-gradient(155deg, var(--moss-4), var(--bg-alt) 70%));
+  background-size: cover;
+  background-position: center;
   color: var(--accent);
   overflow: hidden;
 }
@@ -742,6 +749,14 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: opacity 0.6s ease;
+}
+
+.seal-photo { transition: opacity 0.6s ease; }
+.js .project-img:not(.is-loaded),
+.js .seal-photo:not(.is-loaded) { opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .project-img, .seal-photo { transition: none; }
 }
 .project-img-placeholder {
   display: none;
@@ -1013,7 +1028,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   padding-top: clamp(1.5rem, 3vw, 2rem);
   border-top: 1px solid var(--border);
   width: 100%;
-  max-width: 560px;
+  max-width: 640px;
 }
 .channel {
   display: flex;
