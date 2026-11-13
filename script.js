@@ -160,6 +160,16 @@
     revealEls.forEach((el) => el.classList.add("is-visible"));
   }
 
+  /* ---------------- Imágenes: aparecen con fundido cuando ya cargaron ---------------- */
+  document.querySelectorAll(".project-img, .seal-photo").forEach((img) => {
+    const show = () => img.classList.add("is-loaded");
+    if (img.complete) {
+      if (img.naturalWidth > 0) show();
+    } else {
+      img.addEventListener("load", show, { once: true });
+    }
+  });
+
   /* ---------------- Carrusel de proyectos ---------------- */
   const track = document.getElementById("projectsTrack");
   const prevBtn = document.getElementById("projPrev");
